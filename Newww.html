@@ -7,14 +7,14 @@
     <title>Simple Chatroom with Gemini API</title>
     <style>
         body {
-            color: white;
-            font-family: 'Courier New', Courier, monospace;
+            color: #8e62c7;
+            font-family: 'Times New Roman', Times, serif;
             display: flex;
             justify-content: center;
             align-items: center;
             height: 100vh;
             margin: 0;
-            background: #000;
+            background: rgb(244, 239, 152);
             /* Default background in case image doesn't load */
         }
 
@@ -43,12 +43,12 @@
             /* Takes the full width of the background wrapper */
             height: 200px;
             /* Adjusted height to position at the bottom of the image */
-            background: rgba(0, 0, 0, 0.8);
+            background: rgb(244, 239, 152);
             /* Semi-transparent black background */
             padding: 10px;
             display: none;
             box-sizing: border-box;
-            border: 1px solid #fff;
+            border: 1px solid #8e62c7;
             overflow: hidden;
         }
 
@@ -63,11 +63,11 @@
         }
 
         .userMessage {
-            color: #0f0;
+            color: #ef8843;
         }
 
         .botMessage {
-            color: #ff0;
+            color: #895ac8;
         }
 
         #messageInput {
@@ -76,8 +76,8 @@
             box-sizing: border-box;
             background: transparent;
             border: none;
-            border-top: 1px solid #fff;
-            color: white;
+            border-top: 1px solid rgb(244, 239, 152);
+            color: rgb(244, 239, 152);
             font-size: 16px;
         }
 
@@ -89,15 +89,15 @@
             cursor: pointer;
             /* Position it within the wrapper */
             margin-bottom: 20px;
-            color: white;
+            color: #895ac8;
             /* Text color */
-            background: rgba(0, 0, 0, 0.8);
+            background: rgb(244, 239, 152);
             /* Same semi-transparent background as introBlock */
-            border: 1px solid #fff;
+            border: 1px solid #895ac8;
             /* Same border as introBlock */
             border-radius: 5px;
             /* Rounded corners similar to introBlock */
-            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+            box-shadow: 0px 4px 10px #895ac8;
             /* Subtle shadow for depth */
             transition: all 0.3s ease;
             /* Smooth transition for hover effects */
@@ -105,9 +105,9 @@
 
         #startButton:hover,
         #introButton:hover {
-            background: rgba(0, 0, 0, 1);
+            background: rgb(244, 239, 152);
             /* Darker background on hover */
-            box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.5);
+            box-shadow: 0px 6px 15px rgb(244, 239, 152);
             /* Slightly larger shadow on hover */
             transform: scale(1.05);
             /* Slightly enlarge on hover */
@@ -116,11 +116,11 @@
         #introBlock {
             width: 80%;
             max-width: 600px;
-            background: rgba(0, 0, 0, 0.8);
+            background: rgb(244, 239, 152);
             /* Semi-transparent background */
             padding: 20px;
             box-sizing: border-box;
-            border: 1px solid #fff;
+            border: 1px solid #895ac8;
             margin-bottom: 20px;
             /* Space between intro block and start button */
             position: absolute;
@@ -265,17 +265,24 @@
         if (sceneMatch && sceneMatch[1]) {
             let scene = sceneMatch[1];
             console.log(scene);
-            // 檢查scene是否包含"宿舍"
-            if (scene.includes("宿舍")) {
-                document.getElementById('backgroundWrapper').style.backgroundImage = "url('./img/dorm.jpeg')";
-            } else if (scene.includes("聚會")) {
-                document.getElementById('backgroundWrapper').style.backgroundImage = "url('./img/party.jpeg')";
-            } else if (scene.includes("圖書館")) {
-                document.getElementById('backgroundWrapper').style.backgroundImage = "url('./img/library.jpeg')";
+            // 檢查scene是否包含"此刻的公寓"
+            if (scene.includes("此刻的公寓")) {
+                document.getElementById('backgroundWrapper').style.backgroundImage = "url('tengrai_image_1717412586_4696639.png')";
+            } else if (scene.includes("高中教室")) {
+                document.getElementById('backgroundWrapper').style.backgroundImage = "url('tengrai_image_1717585204_7336597.jpeg')";
+            } else if (scene.includes("課堂上")) {
+                document.getElementById('backgroundWrapper').style.backgroundImage = "url('tengrai_image_1717590445_7599661.jpeg')";
+            } else if (scene.includes("家裡")) {
+                document.getElementById('backgroundWrapper').style.backgroundImage = "url('tengrai_image_1717585721_6502142.jpeg')";
+            } else if (scene.includes("查理登場")) {
+                document.getElementById('backgroundWrapper').style.backgroundImage = "url('tengrai_image_1717586594_9797895.jpeg')";
+            }else if (scene.includes("現在的公寓")) {
+                document.getElementById('backgroundWrapper').style.backgroundImage = "url('tengrai_image_1717412586_4696639.png')";
+            }else if (scene.includes("公寓書桌前")) {
+                document.getElementById('backgroundWrapper').style.backgroundImage = "url('tengrai_image_1717590982_0196528.jpeg')";
             }
         }
     }
-
     function formatText(text) {
         // Replace ** with a new line and bold tag
         let formattedText = text.replace(/\*\*(.*?)\*\*/g, '<br><strong>$1</strong>');
@@ -294,11 +301,11 @@
 
     document.getElementById('startButton').addEventListener('click', function () {
         // Change background image and display settings when starting the game
-        document.getElementById('backgroundWrapper').style.backgroundImage = "url('./img/dorm.jpeg')";
+        document.getElementById('backgroundWrapper').style.backgroundImage = "url('tengrai_image_1717597943_95565.png')";
         document.getElementById('introBlock').style.display = 'none'; // Show the game container
         document.getElementById('gameContainer').style.display = 'inline';
         document.getElementById('introButton').style.display = 'none'; // Hide the start button
-
+        
         conversationHistory.push({
             "role": 'user',
             "parts": [{
@@ -353,19 +360,18 @@
                         場景:家裡
                         描述:${userName}回到家中，看到母親麗塔正在客廳裡整理文件。
                         ${userName}（獨白）：媽媽看起來有些疲憊……我是不是應該和她好好談談寫作競賽的事呢?
-                        選擇A：前往與母親麗塔談話。${userName}：媽媽，我今天學校有一個寫作比賽，老師建議我參加，但……
-                        麗塔（溫和地）：參加比賽是一個很好的機會，寫作是你的天賦，你應該好好把握啊!
-                        ${userName}：但是，如果我參加這個比賽，我可能需要花一些錢。
+                        選擇A：前往與母親麗塔談話。${userName}：媽媽，我今天學校有一個寫作比賽，老師建議我參加，但…
+                        麗塔（溫和地）：參加比賽是一個很好的機會，寫作是你的天賦，你應該好好把握啊!${userName}：但是，如果我參加這個比賽，我可能需要花一些錢......
                         麗塔：錢？不用擔心，只要你有這個機會，我們會支持你的。
                         ${userName}（感動）：謝謝媽媽，我會努力的!!!(選擇後進入查理登場劇情)
+
                         選擇B：決定暫先不談論。決定暫時不和母親談論這個話題，轉身回到自己的房間。(選擇後進入查理登場劇情)
                         
 
                         
                         場景:查理登場
-                        描述:查理："${userName}，你在寫什麼呢？"
-                        ${userName}：我在想一個新的故事，希望能參加這次的比賽。
-                        查理：你一定會可以的!你總是寫得那麼好。
+                        描述:查理："${userName}，你在寫什麼呢？${userName}：我在想一個新的故事，希望能參加這次的比賽。查理：你一定會可以的!你總是寫得那麼好。
+
                         選擇A：對於是否能獲得獎學金依然有些擔心。${userName}：查理，我有點擔心我無法獲得獎學金。
                         查理：如果有什麼我能幫忙的，請告訴我，不管是需要題材發想還是校稿，我都非常樂意幫忙!(選擇後進入現在的公寓劇情)
                         選擇B：與查理分享準備競賽的亢奮心情。${userName}：查理，這次的比賽對我來說真的很重要，我需要你的支持!
@@ -375,13 +381,11 @@
 
                         
                         場景:現在的公寓
-                        描述:窗外傳來清脆的鳥叫聲，此時已是天色漸亮的早晨。
-                        ${userName}（醒來）：這真是一個神奇的夢。我應該去找查理和克莉絲汀老師談談!
-                        選擇A：與查理見面。${userName}和查理約好了在咖啡廳見面。
+                        描述:窗外傳來清脆的鳥叫聲，此時已是天色漸亮的早晨。${userName}（醒來）：這真是一個神奇的夢。我應該去找查理和克莉絲汀老師談談!
+                        選擇A：會面查理。${userName}和查理約好了在咖啡廳見面。
                         查理：${userName}，妳怎麼了？看起來很不一樣，那麼神清氣爽的。
                         莎拉：查理，我做了一個夢，夢到了我們的高中時期。我想我需要重新找回寫作的初衷。(選擇後進入選擇A1和選擇A2)
-                        選擇B：與克莉絲汀見面。${userName}決定拜訪克莉絲汀老師的家
-                        克莉絲汀：${userName}，很高興見到你。最近過得還好嗎?(選擇後進入選擇B1和選擇B2)
+                        
                         
                         選擇A1：坦誠表達自己不想再迎合市場。${userName}：查理，我決定不再迎合市場，我要寫出真正打動人心的作品，即使可能會流失一些書迷們?但我相信會吸引到更多真正喜歡我的讀者們的!
                         查理：我理解你，但這樣我可能需要做全新的規劃，之後再讓你過目!不過也很開心，你終於找到了自己真正所想要的。(選擇後進入書桌前劇情)
@@ -390,16 +394,18 @@
                         
                         
 
-                        
+                        選擇B：與克莉絲汀見面。${userName}決定拜訪克莉絲汀老師的家
+                        克莉絲汀：${userName}，很高興見到你。最近過得還好嗎?(選擇後進入選擇B1和選擇B2)
+
                         選擇B1：坦誠表達自己不想再迎合市場。${userName}：老師，我決定不再迎合市場了，雖然現在我寫出的小說受到大眾喜愛，但其實我一直覺得，自己沒有寫出真正能打動人心的作品，因此，我認為即使可能會流失一些書迷們，但我相信，只要寫自己喜歡的內容，一定會吸引到更多真正喜歡我的讀者們的!
-                        克莉絲汀 : 身為你的指導老師，我本就很榮幸有你這個如此出色的學生了，不管你做出什麼決定，我很開心，你終於找到了自己真正所想要的。(選擇後進入書桌前劇情)
+                        克莉絲汀 : 身為你的指導老師，我本就很榮幸有你這個如此出色的學生了，不管你做出什麼決定，我很開心，你終於找到了自己真正所想要的。(選擇後進入公寓書桌前劇情)
                         選擇B2：想繼續努力迎合市場，並請求支持。${userName}：老師，想請教您認為我做的決定是對的嗎？
-                        克莉絲汀：當然!每個決定本就沒有任何對錯，為師只希望你在寫作之餘，請記得一定也要把自己的身心顧好!(選擇後進入書桌前劇情)
+                        克莉絲汀：當然!每個決定本就沒有任何對錯，為師只希望你在寫作之餘，請記得一定也要把自己的身心顧好!(選擇後進入公寓書桌前劇情)
                         
                     
 
                         
-                        場景:書桌前
+                        場景:公寓書桌前
                         描述:${userName}（心想）：我終於找回當時投入寫作真正的初衷了!
                         選擇A：轉換寫作風格，重拾對寫作的熱情。（選擇後進入結局一)
                         選擇B：迎合市場並繼續寫作。（選擇後進入結局二)
@@ -409,7 +415,7 @@
                         結局二:${userName}也許我應該繼續迎合市場，可不能忘了我現在的書迷們啊!寫出了迎合市場的暢銷作品，並努力在寫作與自己的身心狀態間取得平衡。 
 
 
-                        請根據腳本中的對話，根據"""此刻的公寓"""到"""高中教室"""到"""課堂上"""到"""家裡"""到"""查理登場"""到"""現在的公寓"""到"""書桌前"""最後到"""結局"""即停止，開始一個文字冒險遊戲，一次進行一次場景與描述、選擇，每進一個場景都需要呈現以下格式與資訊：
+                        請根據腳本中的對話，根據"""此刻的公寓"""到"""高中教室"""到"""課堂上"""到"""家裡"""到"""查理登場"""到"""現在的公寓"""到"""公寓書桌前"""最後到"""結局"""即停止，開始一個文字冒險遊戲，一次進行一次場景與描述、選擇，每進一個場景都需要呈現以下格式與資訊：
                         <場景>：目前故事的背景為何
                         <描述>：當前場景的人物互動
                         <選擇>：在每一次的對話中，你都會根據腳本給我可以選擇的動作，根據我選擇的動作繼續接下來的劇情，整體劇情會圍繞腳本發展。
